@@ -10,10 +10,10 @@ import java.util.Map;
 /**
  * Created by piyush.agarwal on 23/12/16.
  */
-public class UserTaskTao {
-    private static Map<String, List<Task> > userTaskMap = new HashMap<String, List<Task>>();
+public class UserTaskDao {
+    public static Map<String, List<Task> > userTaskMap = new HashMap<String, List<Task>>();
 
-    private void insertUserTask(String phoneNumber, Task task){
+    public void insertUserTask(String phoneNumber, Task task){
         List<Task> currentTask;
 
         if(userTaskMap.containsKey(phoneNumber)){
@@ -26,8 +26,7 @@ public class UserTaskTao {
         userTaskMap.put(phoneNumber, currentTask);
     }
 
-    private List<Task> getTasksOfUser(String phoneNumber){
+    public List<Task> getTasksOfUser(String phoneNumber){
         return userTaskMap.get(phoneNumber);
     }
-
 }

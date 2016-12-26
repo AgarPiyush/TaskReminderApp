@@ -1,5 +1,7 @@
 package com.demo.taskapp.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 
 /**
@@ -7,10 +9,19 @@ import org.joda.time.DateTime;
  */
 public class Task {
 
+    @JsonProperty
+    @NotEmpty
     private String taskDetails;
-    private DateTime taskDate;
-    private String phoneNumber;
 
+    @JsonProperty
+    private DateTime dueDate;
+
+    private int id;
+
+    public Task(String taskDetails, DateTime dueDate){
+        this.taskDetails = taskDetails;
+        this.dueDate = dueDate;
+    }
     public int getId() {
         return id;
     }
@@ -18,8 +29,6 @@ public class Task {
     public void setId(int id) {
         this.id = id;
     }
-
-    private int id;
 
 
     public String getTaskDetails() {
@@ -30,12 +39,12 @@ public class Task {
         this.taskDetails = taskDetails;
     }
 
-    public DateTime getTaskDate() {
-        return taskDate;
+    public DateTime getDueDate() {
+        return dueDate;
     }
 
-    public void setTaskDate(DateTime taskDate) {
-        this.taskDate = taskDate;
+    public void setDueDate(DateTime taskDate) {
+        this.dueDate = dueDate;
     }
 
 }
