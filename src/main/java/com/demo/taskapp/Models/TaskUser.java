@@ -4,34 +4,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 
-import java.util.UUID;
-
 /**
- * Created by piyush.agarwal on 23/12/16.
+ * Created by piyush.agarwal on 27/12/16.
  */
-public class Task {
+public class TaskUser {
 
-    @JsonProperty
     @NotEmpty
+    @JsonProperty
+    private String phoneNumber;
+
+    @NotEmpty
+    @JsonProperty
     private String taskDetails;
 
     @JsonProperty
-    private DateTime dueDate;
+    private String dueDate;
 
-    private UUID id;
+    public TaskUser(){
 
-    public Task(String taskDetails, DateTime dueDate, UUID id){
-        this.taskDetails = taskDetails;
-        this.dueDate = dueDate;
-        this.id = UUID.randomUUID();
     }
 
-    public UUID getId() {
-        return id;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getTaskDetails() {
@@ -42,12 +40,11 @@ public class Task {
         this.taskDetails = taskDetails;
     }
 
-    public DateTime getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(DateTime taskDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
-
 }

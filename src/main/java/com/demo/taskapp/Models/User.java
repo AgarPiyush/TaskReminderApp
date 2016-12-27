@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 public class User {
 
+
     @NotEmpty
     @JsonProperty
     private String userName;
@@ -16,13 +17,17 @@ public class User {
     @JsonProperty
     private String phoneNumber;
 
+    public User(){
+
+    }
+
     @JsonProperty
-    public String getName() {
+    public String getUserName() {
         return userName;
     }
 
     @JsonProperty
-    public void setName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
