@@ -1,9 +1,10 @@
 package com.demo.taskapp.Configuration;
-import com.demo.taskapp.Controller.TaskController;
-import com.demo.taskapp.Controller.UserController;
-import com.demo.taskapp.Dao.UserDoa;
-import com.demo.taskapp.Dao.UserTaskDao;
-import com.demo.taskapp.Models.Task;
+import com.demo.taskapp.Resource.TaskResource;
+import com.demo.taskapp.Resource.UserResource;
+import com.demo.taskapp.Dao.UserDao;
+import com.demo.taskapp.Dao.TaskDao;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
@@ -31,20 +32,15 @@ public class TaskApplication extends Application<Configuration>{
     @Override
     public void run(Configuration configuration,
                     Environment environment) {
-//        final TemplateHealthCheck healthCheck =
-//                new TemplateHealthCheck(configuration.getTemplate());
-//        environment.healthChecks().register("template", healthCheck);
+        UserDao userDoa = new UserDao();
+        TaskDao taskDao = new TaskDao();
 
-//        final HelloWorldResource resource = new HelloWorldResource(
-//                configuration.getTemplate(),
-//                configuration.getDefaultName()
-//        );
-        UserDoa userDoa = new UserDoa();
-        UserTaskDao userTaskDao = new UserTaskDao();
-        final UserController userDaoResource = new UserController(userDoa);
-        environment.jersey().register(userDaoResource);
-        final TaskController taskControllerResouce = new TaskController(userDoa, userTaskDao);
-        environment.jersey().register(taskControllerResouce);
+        final UserResource userResource = new UserResource(userDoa);
+        environment.jersey().register(userResource);
+        final TaskResource taskResource = new TaskResource(userDoa, taskDao);
+        environment.jersey().register(taskResource);
 
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JodaModule());
     }
 }

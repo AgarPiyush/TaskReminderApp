@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Created by piyush.agarwal on 23/12/16.
  */
-public class UserDoa {
+public class UserDao {
     public static Map<String, String> userMap = new HashMap<String, String>();
 
     public void insertUser(String phoneNumber, String userName){

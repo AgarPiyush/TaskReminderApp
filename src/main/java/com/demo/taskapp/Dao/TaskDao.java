@@ -1,6 +1,6 @@
 package com.demo.taskapp.Dao;
 
-import com.demo.taskapp.Models.Task;
+import com.demo.taskapp.Model.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +10,8 @@ import java.util.Map;
 /**
  * Created by piyush.agarwal on 23/12/16.
  */
-public class UserTaskDao {
+public class TaskDao {
+
     public static Map<String, List<Task> > userTaskMap = new HashMap<String, List<Task>>();
 
     public void insertUserTask(String phoneNumber, Task task){

@@ -1,6 +1,8 @@
-package com.demo.taskapp.Models;
+package com.demo.taskapp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 
@@ -16,9 +18,14 @@ public class Task {
     private String taskDetails;
 
     @JsonProperty
+    @JsonSerialize(using=DateTimeSerializer.class)
     private DateTime dueDate;
 
     private UUID id;
+
+    public Task(){
+
+    }
 
     public Task(String taskDetails, DateTime dueDate, UUID id){
         this.taskDetails = taskDetails;
@@ -46,7 +53,7 @@ public class Task {
         return dueDate;
     }
 
-    public void setDueDate(DateTime taskDate) {
+    public void setDueDate(DateTime dueDate) {
         this.dueDate = dueDate;
     }
 

@@ -1,4 +1,4 @@
-package com.demo.taskapp.Models;
+package com.demo.taskapp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -19,6 +19,11 @@ public class User {
 
     public User(){
 
+    }
+
+    public User(String userName, String phoneNumber){
+        this.userName = userName;
+        this.phoneNumber = phoneNumber;
     }
 
     @JsonProperty
