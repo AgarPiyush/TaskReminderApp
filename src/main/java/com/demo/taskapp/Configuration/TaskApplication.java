@@ -39,8 +39,5 @@ public class TaskApplication extends Application<Configuration>{
         environment.jersey().register(userResource);
         final TaskResource taskResource = new TaskResource(userDoa, taskDao);
         environment.jersey().register(taskResource);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JodaModule());
     }
 }
